@@ -4,16 +4,27 @@ import { StyleSheet, Text, View } from 'react-native';
 
 
 export default class Example extends React.Component {
+  constructor(props){
+    super(props)
+    //set value in state for initial date
+    this.state = {date:""}
+  }
+  saveState(data){
+    this.setState({date: data.dateString})
+  };
+  
   render() 
   {
     return (
       <View style={{ paddingTop: 50, flex: 1 }}>
         <Calendar
           // Initially visible month. Default = Date()
-          current={'2020-02-22'}
+          //current={'2020-02-22'}
           // Handler which gets executed on day press. Default = undefined
           onDayPress={day => {
-            console.log('selected day', day);
+            console.log(day);
+            this.saveState(day);
+            console.log(this.state.date)
           }}
           // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
           monthFormat={'MMM yyyy'}
