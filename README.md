@@ -1,0 +1,2 @@
+# panchang-mobile
+Panchangam App
