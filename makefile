@@ -1,0 +1,2 @@
+run:
+	expo start
