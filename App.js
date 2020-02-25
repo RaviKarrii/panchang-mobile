@@ -13,16 +13,17 @@ export default class Example extends React.Component {
   saveState(data){
     this.setState({date: data.dateString})
   };
-  getMoviesFromApiAsync() {
-    return fetch('https://daily-panchang.herokuapp.com/panchang-api/v1.0/?date=2020-02-25&location=Kakinada')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        return responseJson.movies;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  async getMoviesFromApiAsync() {
+        try {
+          const resp = await fetch("https://daily-panchang.herokuapp.com/panchang-api/v1.0/?date=2020-02-25&location=Kakinada")
+          const newResp = await resp.json();
+          
+          return newResp
+        } catch (err) {
+     // all errors will be captured here for anything in the try block
+             console.log(err)
+          }
+        }
   
   render() 
   {
@@ -33,7 +34,7 @@ export default class Example extends React.Component {
           //current={'2020-02-22'}
           // Handler which gets executed on day press. Default = undefined
           onDayPress={day => {
-            console.log(day);
+            //console.log(day);
             this.saveState(day);
             this.setState({jsondata :this.getMoviesFromApiAsync()})
             console.log(this.state.jsondata);
@@ -59,9 +60,7 @@ export default class Example extends React.Component {
           <Text>
             {this.state.date}
           </Text> 
-          <Text>{this.state.jsondata.Durmuhurtam}</Text>
-          <Text>{this.state.jsondata.Karna}</Text>
-          <Text>{this.state.jsondata.Karna}</Text>     
+          <Text><String>{this.state.jsondata.Maasa}</String></Text>   
         </ScrollView>
       </View>
     );
