@@ -57,7 +57,6 @@ export default class Example extends React.Component {
             //console.log(day);
             this.saveState(day);
             this.getData();
-            
             //console.log(this.state.date)
           }}
           // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
