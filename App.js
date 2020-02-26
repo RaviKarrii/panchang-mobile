@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar } from 'react-native-calendars';
 import { StyleSheet, FlatList, ScrollView, Text, View } from 'react-native';
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 
 export default class Example extends React.Component {
@@ -52,9 +53,6 @@ export default class Example extends React.Component {
     return (
       <View style={{ paddingTop: 5, flex: 1 }}>
         <Calendar
-          // Initially visible month. Default = Date()
-          //current={'2020-02-22'}
-          // Handler which gets executed on day press. Default = undefined
           onDayPress={day => {
             //console.log(day);
             this.saveState(day);
@@ -71,18 +69,53 @@ export default class Example extends React.Component {
           // Hide month navigation arrows. Default = false
           hideArrows={false}
           // Do not show days of other months in month page. Default = false
-          hideExtraDays={true}
+          hideExtraDays={false}
           // If hideArrows=false and hideExtraDays=false do not swich month when tapping on greyed out
           // day from another month that is visible in calendar page. Default = false
           disableMonthChange={false}
           // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
-          firstDay={1}
+          firstDay={0}
         />
-        <ScrollView>       
+        <ScrollView style={{ paddingLeft: 10}}>        
           <Text>
             {this.state.date}
           </Text> 
-          <Text>{JSON.stringify(this.state.jsondata)}</Text>  
+          <Grid>
+              <Row><Col><Text>Day Duration</Text></Col>
+              <Col><Text>{this.state.jsondata["Day Duration"]}</Text></Col></Row>
+              <Row><Col><Text>Durmuhurtam</Text></Col>
+              <Col><Text>{this.state.jsondata["Durmuhurtam"]}</Text></Col></Row>
+              <Row><Col><Text>Gulika Kalam</Text></Col>
+              <Col><Text>{this.state.jsondata["Gulika Kalam"]}</Text></Col></Row>
+              <Row><Col><Text>Karna</Text></Col>
+              <Col><Text>{this.state.jsondata["Karna"]}</Text></Col></Row>
+              <Row><Col><Text>Maasa</Text></Col>
+              <Col><Text>{this.state.jsondata["Maasa"]}</Text></Col></Row>
+              <Row><Col><Text>MoonRise</Text></Col>
+              <Col><Text>{this.state.jsondata["MoonRise"]}</Text></Col></Row>
+              <Row><Col><Text>MoonSet</Text></Col>
+              <Col><Text>{this.state.jsondata["MoonSet"]}</Text></Col></Row>
+              <Row><Col><Text>Nakshatra</Text></Col>
+              <Col><Text>{this.state.jsondata["Nakshatra"]}</Text></Col></Row>
+              <Row><Col><Text>Night Duration</Text></Col>
+              <Col><Text>{this.state.jsondata["Night Duration"]}</Text></Col></Row>
+              <Row><Col><Text>Rahu Kalam</Text></Col>
+              <Col><Text>{this.state.jsondata["Rahu Kalam"]}</Text></Col></Row>
+              <Row><Col><Text>Ritu</Text></Col>
+              <Col><Text>{this.state.jsondata["Ritu"]}</Text></Col></Row>
+              <Row><Col><Text>SunRise</Text></Col>
+              <Col><Text>{this.state.jsondata["SunRise"]}</Text></Col></Row>
+              <Row><Col><Text>SunSet</Text></Col>
+              <Col><Text>{this.state.jsondata["SunSet"]}</Text></Col></Row>
+              <Row><Col><Text>Tithi</Text></Col>
+              <Col><Text>{this.state.jsondata["Tithi"]}</Text></Col></Row>
+              <Row><Col><Text>Vaaram</Text></Col>
+              <Col><Text>{this.state.jsondata["Vaaram"]}</Text></Col></Row>
+              <Row><Col><Text>Yama Kalam</Text></Col>
+              <Col><Text>{this.state.jsondata["Yama Kalam"]}</Text></Col></Row>
+              <Row><Col><Text>Yoga</Text></Col>
+              <Col><Text>{this.state.jsondata["Yoga"]}</Text></Col></Row>
+          </Grid>
         </ScrollView>
       </View>
     );
