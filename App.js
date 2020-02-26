@@ -66,9 +66,9 @@ export default class Example extends React.Component {
         <ScrollView style={{ paddingLeft: 10}}>        
 
           <Grid>
-              <Row style={{ backgroundColor: '#635DB7'}}><Col><Text>Day Duration</Text></Col>
+              <Row><Col><Text>Day Duration</Text></Col>
               <Col><Text>{this.state.jsondata["Day Duration"]}</Text></Col></Row>
-              <Row style={{ backgroundColor: '#635DB7'}}><Col><Text>Durmuhurtam</Text></Col>
+              <Row><Col><Text>Durmuhurtam</Text></Col>
               <Col><Text>{this.state.jsondata["Durmuhurtam"]}</Text></Col></Row>
               <Row><Col><Text>Gulika Kalam</Text></Col>
               <Col><Text>{this.state.jsondata["Gulika Kalam"]}</Text></Col></Row>
