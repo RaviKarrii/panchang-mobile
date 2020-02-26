@@ -10,25 +10,14 @@ export default class Example extends React.Component {
     //set value in state for initial date
     this.state = {date:"2020-02-27",
                   jsondata:{
-                    "Day Duration": "11:43:12",
-                    "Durmuhurtam": " 11:50:43 -  12:37:36",
-                    "Gulika Kalam": " 10:46:16 -  12:14:10",
-                    "Karna": "Taitila",
-                    "Maasa": "Phalguna",
-                    "MoonRise": "8:6:34",
-                    "MoonSet": "20:19:37",
-                    "Nakshatra": "Uttara Bhadrapada , Till 22:08:34",
-                    "Night Duration": "12:13:3",
-                    "Rahu Kalam": " 12:14:10 -  13:42:4",
-                    "Ritu": "Shishir - Winter",
-                    "SunRise": "6:22:34",
-                    "SunSet": "18:5:46",
-                    "Tithi": "Thadiya till Next day, 4:12:07",
-                    "Vaaram": "Wednesday",
-                    "Yama Kalam": " 7:50:28 -  9:18:22",
-                    "Yoga": "Sadhya , Till 9:34:19"
                   }}
   }
+  componentDidUpdate(prevProps, prevState) {
+    //console.log(prevState, this.state);
+    if(prevState.date !== this.state.date) {
+    this.getData();
+    }
+   }
   saveState(data){
     this.setState({date: data.dateString})
   };
@@ -56,7 +45,6 @@ export default class Example extends React.Component {
           onDayPress={day => {
             //console.log(day);
             this.saveState(day);
-            this.getData();
             //console.log(this.state.date)
           }}
           // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
@@ -78,9 +66,9 @@ export default class Example extends React.Component {
         <ScrollView style={{ paddingLeft: 10}}>        
 
           <Grid>
-              <Row><Col><Text>Day Duration</Text></Col>
+              <Row style={{ backgroundColor: '#635DB7'}}><Col><Text>Day Duration</Text></Col>
               <Col><Text>{this.state.jsondata["Day Duration"]}</Text></Col></Row>
-              <Row><Col><Text>Durmuhurtam</Text></Col>
+              <Row style={{ backgroundColor: '#635DB7'}}><Col><Text>Durmuhurtam</Text></Col>
               <Col><Text>{this.state.jsondata["Durmuhurtam"]}</Text></Col></Row>
               <Row><Col><Text>Gulika Kalam</Text></Col>
               <Col><Text>{this.state.jsondata["Gulika Kalam"]}</Text></Col></Row>
