@@ -77,6 +77,7 @@ export default class Example extends React.Component {
           firstDay={0}
         />
         <ScrollView style={{ paddingLeft: 10}}>        
+
           <Grid>
               <Row><Col><Text>Day Duration</Text></Col>
               <Col><Text>{this.state.jsondata["Day Duration"]}</Text></Col></Row>
