@@ -64,42 +64,41 @@ export default class Example extends React.Component {
           firstDay={0}
         />
         <ScrollView style={{ paddingLeft: 10}}>        
-
           <Grid>
-              <Row><Col><Text>Day Duration</Text></Col>
-              <Col><Text>{this.state.jsondata["Day Duration"]}</Text></Col></Row>
-              <Row><Col><Text>Durmuhurtam</Text></Col>
-              <Col><Text>{this.state.jsondata["Durmuhurtam"]}</Text></Col></Row>
-              <Row><Col><Text>Gulika Kalam</Text></Col>
-              <Col><Text>{this.state.jsondata["Gulika Kalam"]}</Text></Col></Row>
-              <Row><Col><Text>Karna</Text></Col>
-              <Col><Text>{this.state.jsondata["Karna"]}</Text></Col></Row>
-              <Row><Col><Text>Maasa</Text></Col>
-              <Col><Text>{this.state.jsondata["Maasa"]}</Text></Col></Row>
-              <Row><Col><Text>MoonRise</Text></Col>
-              <Col><Text>{this.state.jsondata["MoonRise"]}</Text></Col></Row>
-              <Row><Col><Text>MoonSet</Text></Col>
-              <Col><Text>{this.state.jsondata["MoonSet"]}</Text></Col></Row>
-              <Row><Col><Text>Nakshatra</Text></Col>
-              <Col><Text>{this.state.jsondata["Nakshatra"]}</Text></Col></Row>
-              <Row><Col><Text>Night Duration</Text></Col>
-              <Col><Text>{this.state.jsondata["Night Duration"]}</Text></Col></Row>
-              <Row><Col><Text>Rahu Kalam</Text></Col>
-              <Col><Text>{this.state.jsondata["Rahu Kalam"]}</Text></Col></Row>
-              <Row><Col><Text>Ritu</Text></Col>
-              <Col><Text>{this.state.jsondata["Ritu"]}</Text></Col></Row>
-              <Row><Col><Text>SunRise</Text></Col>
-              <Col><Text>{this.state.jsondata["SunRise"]}</Text></Col></Row>
-              <Row><Col><Text>SunSet</Text></Col>
-              <Col><Text>{this.state.jsondata["SunSet"]}</Text></Col></Row>
-              <Row><Col><Text>Tithi</Text></Col>
-              <Col><Text>{this.state.jsondata["Tithi"]}</Text></Col></Row>
-              <Row><Col><Text>Vaaram</Text></Col>
-              <Col><Text>{this.state.jsondata["Vaaram"]}</Text></Col></Row>
-              <Row><Col><Text>Yama Kalam</Text></Col>
-              <Col><Text>{this.state.jsondata["Yama Kalam"]}</Text></Col></Row>
-              <Row><Col><Text>Yoga</Text></Col>
-              <Col><Text>{this.state.jsondata["Yoga"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Day Duration</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Day Duration"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Durmuhurtam</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Durmuhurtam"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#a099e0' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Gulika Kalam</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Gulika Kalam"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Karna</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Karna"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Maasa</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Maasa"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>MoonRise</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["MoonRise"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>MoonSet</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["MoonSet"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#a099e0' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Nakshatra</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Nakshatra"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Night Duration</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Night Duration"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Rahu Kalam</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Rahu Kalam"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Ritu</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Ritu"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>SunRise</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["SunRise"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#a099e0' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>SunSet</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["SunSet"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Tithi</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Tithi"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Vaaram</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Vaaram"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Yama Kalam</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Yama Kalam"]}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>Yoga</Text></Col>
+              <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Yoga"]}</Text></Col></Row>
           </Grid>
         </ScrollView>
       </View>
