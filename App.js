@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar } from 'react-native-calendars';
-import { StyleSheet, FlatList, ScrollView, Text, View } from 'react-native';
+import {ScrollView, Text, View } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 
@@ -8,7 +8,7 @@ export default class Example extends React.Component {
   constructor(props){
     super(props)
     //set value in state for initial date
-    this.state = {date:"2020-02-27",
+    this.state = {date:"2020-02-26",
                   jsondata:{
                   }}
   }
