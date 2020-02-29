@@ -8,9 +8,15 @@ export default class Example extends React.Component {
   constructor(props){
     super(props)
     //set value in state for initial date
-    this.state = {date:"2020-02-26",
+    this.initflag = true
+    this.state = {date:"2020-02-02",
                   jsondata:{
                   }}
+  }
+  UNSAFE_componentWillMount(prevProps, prevState) {
+
+    this.initmethod();
+    this.getData();
   }
   componentDidUpdate(prevProps, prevState) {
     //console.log(prevState, this.state);
@@ -21,6 +27,18 @@ export default class Example extends React.Component {
   saveState(data){
     this.setState({date: data.dateString})
   };
+  initmethod(){
+    if(this.initflag){
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      today = yyyy + '-' + mm + '-' + dd;
+      console.log(today)
+      this.setState({date: today})
+      this.initflag = false
+    }
+  }
   async getDataPromise() {
         try {
           const resp = await fetch("https://daily-panchang.herokuapp.com/panchang-api/v1.0/?date="+this.state.date+"&location=Kakinada")
