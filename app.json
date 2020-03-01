@@ -28,7 +28,7 @@
     },
     "android": {
       "package": "com.ravikarri.panchang",
-      "versionCode": 3
+      "versionCode": 4
     }
   }
 }
