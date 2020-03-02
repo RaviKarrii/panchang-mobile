@@ -2,21 +2,37 @@ import React from 'react';
 import { Calendar } from 'react-native-calendars';
 import {ScrollView, Text, View } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
+import MapView from "react-native-maps";
+import * as Location from 'expo-location';
 
 
 export default class Example extends React.Component {
   constructor(props){
     super(props)
     //set value in state for initial date
-    this.initflag = true
+    this.initflag = true;
+    this.mapRegion = null;
+    this.lastLat =  17.3850;
+    this.lastLong = 78.4867;
     this.state = {date:"2020-02-02",
-                  jsondata:{
-                  }}
+                  jsondata:{}}
   }
   UNSAFE_componentWillMount(prevProps, prevState) {
 
     this.initmethod();
     this.getData();
+  }
+  componentDidMount(){
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+      // Create the object to update this.state.mapRegion through the onRegionChange function
+      let region = {
+        latitude:       position.coords.latitude,
+        longitude:      position.coords.longitude,
+        latitudeDelta:  0.00922*1.5,
+        longitudeDelta: 0.00421*1.5
+      }
+      this.onRegionChange(region, region.latitude, region.longitude);
+    }, (error)=>console.log(error));
   }
   componentDidUpdate(prevProps, prevState) {
     //console.log(prevState, this.state);
@@ -24,11 +40,31 @@ export default class Example extends React.Component {
     this.getData();
     }
    }
+
+   onRegionChange(region, lastLat, lastLong) {
+    this.setState({
+      mapRegion: region,
+      // If there are no new values set the current ones
+      lastLat: lastLat || this.lastLat,
+      lastLong: lastLong || this.lastLong
+    });
+  }
+
   saveState(data){
     this.setState({date: data.dateString})
   };
   initmethod(){
     if(this.initflag){
+      this.watchID = navigator.geolocation.watchPosition((position) => {
+        // Create the object to update this.state.mapRegion through the onRegionChange function
+        let region = {
+          latitude:       position.coords.latitude,
+          longitude:      position.coords.longitude,
+          latitudeDelta:  0.00922*1.5,
+          longitudeDelta: 0.00421*1.5
+        }
+        this.onRegionChange(region, region.latitude, region.longitude);
+      }, (error)=>console.log(error));
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -41,8 +77,8 @@ export default class Example extends React.Component {
   }
   async getDataPromise() {
         try {
-          const resp = await fetch("https://daily-panchang.herokuapp.com/panchang-api/v1.0/?date="+this.state.date+"&location=Kakinada")
-          console.log("https://daily-panchang.herokuapp.com/panchang-api/v1.0/?date="+this.state.date+"&location=Kakinada");
+          const resp = await fetch("https://daily-panchang.herokuapp.com/panchang-api/v1.0/?date="+this.state.date+"&lat="+this.lastLat+"&lon="+this.lastLong+"")
+          console.log("https://daily-panchang.herokuapp.com/panchang-api/v1.0/?date="+this.state.date+"&lat="+this.lastLat+"&lon="+this.lastLong+"");
           const newResp = await resp.json();
           return newResp
         } catch (err) {

@@ -3,8 +3,8 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://az-zh6.ravikarrii.panchang-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.az-zh6.ravikarrii.panchang-mobile.exp.direct",
+  "ngrokPid": 50512,
   "webpackServerPort": null
 }
