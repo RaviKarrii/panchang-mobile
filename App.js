@@ -12,49 +12,14 @@ export default class Example extends React.Component {
     //set value in state for initial date
     this.initflag = true;
     this.mapRegion = null;
-    this.lastLat =  17.3850;
-    this.lastLong = 78.4867;
+    this.lastLat =  13.3850;
+    this.lastLong = 18.4867;
     this.state = {date:"2020-02-02",
-                  jsondata:{}}
+                  jsondata:{},
+                  locupd:0.0}
   }
-  UNSAFE_componentWillMount(prevProps, prevState) {
-
-    this.initmethod();
-    this.getData();
-  }
-  componentDidMount(){
-    this.watchID = navigator.geolocation.watchPosition((position) => {
-      // Create the object to update this.state.mapRegion through the onRegionChange function
-      let region = {
-        latitude:       position.coords.latitude,
-        longitude:      position.coords.longitude,
-        latitudeDelta:  0.00922*1.5,
-        longitudeDelta: 0.00421*1.5
-      }
-      this.onRegionChange(region, region.latitude, region.longitude);
-    }, (error)=>console.log(error));
-  }
-  componentDidUpdate(prevProps, prevState) {
-    //console.log(prevState, this.state);
-    if(prevState.date !== this.state.date) {
-    this.getData();
-    }
-   }
-
-   onRegionChange(region, lastLat, lastLong) {
-    this.setState({
-      mapRegion: region,
-      // If there are no new values set the current ones
-      lastLat: lastLat || this.lastLat,
-      lastLong: lastLong || this.lastLong
-    });
-  }
-
-  saveState(data){
-    this.setState({date: data.dateString})
-  };
-  initmethod(){
-    if(this.initflag){
+  updltlon(){
+    Location.requestPermissionsAsync();
       this.watchID = navigator.geolocation.watchPosition((position) => {
         // Create the object to update this.state.mapRegion through the onRegionChange function
         let region = {
@@ -65,6 +30,50 @@ export default class Example extends React.Component {
         }
         this.onRegionChange(region, region.latitude, region.longitude);
       }, (error)=>console.log(error));
+  }
+  UNSAFE_componentWillMount(prevProps, prevState) {
+
+    this.updltlon();
+    this.initmethod();
+    this.getData();
+  }
+  componentDidMount(){
+    
+  }
+  componentDidUpdate(prevProps, prevState) {
+    //console.log(prevState, this.state);
+    if(prevState.date !== this.state.date) {
+    this.getData();
+    }
+    if(prevState.locupd !== this.state.locupd) 
+    {
+      this.getData();
+    }
+   }
+
+   onRegionChange(region, lastLat, lastLong) {
+      this.lastLat  = lastLat;
+      this.lastLong =lastLong;
+      this.setState({locupd: "Done"})
+    }
+
+  saveState(data){
+    this.setState({date: data.dateString})
+  };
+  initmethod(){
+    if(this.initflag){
+      Location.requestPermissionsAsync();
+      this.watchID = navigator.geolocation.watchPosition((position) => {
+        // Create the object to update this.state.mapRegion through the onRegionChange function
+        let region = {
+          latitude:       position.coords.latitude,
+          longitude:      position.coords.longitude,
+          latitudeDelta:  0.00922*1.5,
+          longitudeDelta: 0.00421*1.5
+        }
+        this.onRegionChange(region, region.latitude, region.longitude);
+      }, (error)=>console.log(error));
+      console.log("Lat GT")
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -87,6 +96,7 @@ export default class Example extends React.Component {
           }
         }
     async getData() {
+          console.log("Getting Data")
           let data = await this.getDataPromise();  
           this.setState({jsondata :data})
         }    
