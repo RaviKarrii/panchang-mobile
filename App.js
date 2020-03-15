@@ -12,11 +12,24 @@ export default class Example extends React.Component {
     //set value in state for initial date
     this.initflag = true;
     this.mapRegion = null;
-    this.lastLat =  13.3850;
-    this.lastLong = 18.4867;
+    this.lastLat =  16.9891;
+    this.lastLong = 82.2475;
     this.state = {date:"2020-02-02",
                   jsondata:{},
-                  locupd:0.0}
+                  locupd:0.0,
+                  markedDates:{}}
+  }
+  setMarkedDates(key) {
+    let markedDates = {};
+    if (typeof this.state.markedDates[key] !== 'undefined') {
+      markedDates = {[key]: {selected: !this.state.markedDates[key].selected}};
+    } else {
+      markedDates = {[key]: {selected: true}};
+    }
+
+    this.setState((prevState) => {
+      return {...prevState, markedDates};
+    })
   }
   updltlon(){
     Location.requestPermissionsAsync();
@@ -109,8 +122,10 @@ export default class Example extends React.Component {
           onDayPress={day => {
             //console.log(day);
             this.saveState(day);
+            this.setMarkedDates(day.dateString);
             //console.log(this.state.date)
           }}
+          markedDates={this.state.markedDates}
           // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
           monthFormat={'MMM yyyy'}
           // Handler which gets executed when visible month changes in calendar. Default = undefined
