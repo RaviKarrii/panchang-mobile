@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-navigation/drawer": "^5.7.7",
     "expo": "~36.0.0",
     "mem": "^6.1.0",
     "minimist": "^1.2.5",
