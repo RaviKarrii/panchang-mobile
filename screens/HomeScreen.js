@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar } from 'react-native-calendars';
-import {ScrollView, Text, View } from 'react-native';
+import {ScrollView, Text, View,PermissionsAndroid , Platform } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import * as Location from 'expo-location';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
@@ -13,7 +13,7 @@ export class HomeScreen extends React.Component {
         this.mapRegion = null;
         this.lastLat =  16.9891;
         this.lastLong = 82.2475;
-        this.state = {date:"2020-02-02",
+        this.state = {date:"2020-2-02",
                       jsondata:{},
                       locupd:0.0,
                       markedDates:{}}
@@ -30,8 +30,36 @@ export class HomeScreen extends React.Component {
           return {...prevState, markedDates};
         })
       }
+      async requsetAndroidPermissions(){
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+            {
+              title: "Location Permission",
+              message:
+                "Panchang needs access to your Lpocation ",
+              buttonNeutral: "Ask Me Later",
+              buttonNegative: "Cancel",
+              buttonPositive: "OK"
+            }
+            
+          );
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            this.getData();
+            console.log("You can use the Location");
+          } else {
+            console.log("Location permission denied");
+          }
+        } catch (err) {
+          console.warn(err);
+        }
+      }
       updltlon(){
         Location.requestPermissionsAsync();
+        if (Platform.OS != "ios" ){
+        this.requsetAndroidPermissions();
+        }
+        //console.log(PermissionsAndroid.check('android.permission.ACCESS_FINE_LOCATION'));
           this.watchID = navigator.geolocation.watchPosition((position) => {
             // Create the object to update this.state.mapRegion through the onRegionChange function
             let region = {
@@ -41,10 +69,24 @@ export class HomeScreen extends React.Component {
               longitudeDelta: 0.00421*1.5
             }
             this.onRegionChange(region, region.latitude, region.longitude);
-          }, (error)=>console.log(error));
+          }, (error)=>console.log(JSON.stringify(error)));
+
+          
       }
       UNSAFE_componentWillMount(prevProps, prevState) {
-    
+        var pad = "00"
+        //var ans = pad.substring(0, pad.length - str.length) + str 
+        var str = String(new Date().getDate());
+        var date = pad.substring(0, pad.length - str.length) + str;
+        str = String(new Date().getMonth() + 1);
+        var month = pad.substring(0, pad.length - str.length) + str;//Current Month
+        var year = String(new Date().getFullYear()); //Current Year
+        console.log(date)
+        this.setState({
+          date: year + '-' + month + '-' + date 
+        });
+        console.log(year + '-' + month + '-' + date)
+        console.log(this.state.date)
         this.updltlon();
         this.initmethod();
         this.getData();
@@ -55,7 +97,7 @@ export class HomeScreen extends React.Component {
       componentDidUpdate(prevProps, prevState) {
         //console.log(prevState, this.state);
         if(prevState.date !== this.state.date) {
-        this.getData();
+          this.getData();
         }
         if(prevState.locupd !== this.state.locupd) 
         {
@@ -74,6 +116,7 @@ export class HomeScreen extends React.Component {
       };
       initmethod(){
         if(this.initflag){
+          
           Location.requestPermissionsAsync();
           this.watchID = navigator.geolocation.watchPosition((position) => {
             // Create the object to update this.state.mapRegion through the onRegionChange function
@@ -144,6 +187,11 @@ export class HomeScreen extends React.Component {
             <Text style={{ paddingTop: 15}}></Text>
             <ScrollView style={{ paddingLeft: 0}}>        
               <Grid>
+            <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10, color: 'white', fontWeight: 'bold' }}>Day</Text></Col>
+                  <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.date}</Text></Col></Row>
+              <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10, color: 'white', fontWeight: 'bold' }}>{this.lastLat}</Text></Col>
+                  <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.lastLong}</Text></Col></Row>
+                      
                   <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10, color: 'white', fontWeight: 'bold' }}>రోజు వ్యవధి</Text></Col>
                   <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.jsondata["Day Duration"]}</Text></Col></Row>
                   <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10,  color: 'white', fontWeight: 'bold' }}>దుర్ముహూర్తం</Text></Col>
