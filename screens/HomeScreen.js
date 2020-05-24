@@ -187,9 +187,7 @@ export class HomeScreen extends React.Component {
             <Text style={{ paddingTop: 15}}></Text>
             <ScrollView style={{ paddingLeft: 0}}>        
               <Grid>
-            <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10, color: 'white', fontWeight: 'bold' }}>Day</Text></Col>
-                  <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.date}</Text></Col></Row>
-              <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10, color: 'white', fontWeight: 'bold' }}>{this.lastLat}</Text></Col>
+            <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10, color: 'white', fontWeight: 'bold' }}>{this.lastLat}</Text></Col>
                   <Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.lastLong}</Text></Col></Row>
                       
                   <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}} style={{top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center'}}><Text style={{left: 10, color: 'white', fontWeight: 'bold' }}>రోజు వ్యవధి</Text></Col>
