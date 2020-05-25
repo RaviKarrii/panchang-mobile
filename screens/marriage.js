@@ -215,6 +215,7 @@ export class marriage extends React.Component {
                 <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పుట్టినరోజు</Text></Col>
                   <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><DatePicker
                     date={this.state.Bdate}
+                    showIcon={false}
                     mode="date"
                     format="YYYY-MM-DD"
                     confirmBtnText="Confirm"
@@ -222,9 +223,10 @@ export class marriage extends React.Component {
                     onDateChange={(date) => { this.setState({ Bdate: date }) }} /></Col></Row>
                 <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పుట్టిన సమయం</Text></Col>
                   <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><DatePicker
-                    time={this.state.Btime}
+                    date={this.state.Btime}
                     mode="time"
                     format={'HH:mm'}
+                    showIcon={false}
                     confirmBtnText="Confirm"
                     cancelBtnText="Cancel"
                     onDateChange={(time) => { this.setState({ Btime: time }) }} /></Col></Row>
@@ -272,6 +274,7 @@ export class marriage extends React.Component {
                 <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పుట్టినరోజు</Text></Col>
                   <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><DatePicker
                     date={this.state.Gdate}
+                    showIcon={false}
                     mode="date"
                     format="YYYY-MM-DD"
                     confirmBtnText="Confirm"
@@ -279,7 +282,8 @@ export class marriage extends React.Component {
                     onDateChange={(date) => { this.setState({ Gdate: date }) }} /></Col></Row>
                 <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పుట్టిన సమయం</Text></Col>
                   <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><DatePicker
-                    time={this.state.Gtime}
+                    date={this.state.Gtime}
+                    showIcon={false}
                     mode="time"
                     format={'HH:mm'}
                     confirmBtnText="Confirm"
