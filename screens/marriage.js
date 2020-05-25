@@ -13,8 +13,8 @@ import Collapsible from 'react-native-collapsible';
 import { Button } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
 import { Col, Row, Grid } from "react-native-easy-grid";
-import GLOBAL from './locationdata.js';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import GLOBAL from './data.js';
 
 
 
@@ -30,17 +30,17 @@ export class marriage extends React.Component {
     //false: One can be expand at a time and other will be closed automatically
     multipleSelect: true,
     Bcoord: {
-      latitude: 53.41058,
-      longitude: -2.97794,
-      latitudeDelta: 0.1,
-      longitudeDelta: 0,
+      latitude: 16.96036,
+      longitude: 82.23809,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
     }
     ,
     Gcoord: {
-      latitude: 53.41058,
-      longitude: -2.97794,
-      latitudeDelta: 0.1,
-      longitudeDelta: 0,
+      latitude: 16.96036,
+      longitude: 82.23809,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
     }
     ,
     Bdate: "2016-05-15",
@@ -50,7 +50,28 @@ export class marriage extends React.Component {
   };
 
 
+  async getData(getreq){
+    try {
+    const resp =await fetch(GLOBAL.url + getreq, { 
+      method: 'get', 
+      headers: new Headers({
+        'Authorization': 'Bearer '+GLOBAL.token, 
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }), 
+    });
+    response = await resp.json();
+  } catch(err) {
+    console.log("Error fetching data-----------", err);
+}
+    return resp;
+  }
+  onButtonGenerate(){
 
+    var getreq = "?ayanamsa=1&bride_dob="+this.state.Gdate+"T"+this.state.Gtime+":00+05:30&bride_coordinates="+this.state.Gcoord.latitude+","+this.state.Gcoord.longitude+"&bridegroom_dob="+this.state.Bdate+"T"+this.state.Btime+":00+05:30&bridegroom_coordinates="+this.state.Bcoord.latitude+","+this.state.Bcoord.longitude;
+    console.log(getreq)
+    var resp = this.getData(getreq)
+    console.log(resp)
+  }
 
   toggleExpandedBoy = () => {
     //Toggling the state of single Collapsible
@@ -89,8 +110,6 @@ export class marriage extends React.Component {
   }
 
   render() {
-    let staticData = GLOBAL.data;
-
     const { multipleSelect, activeSections } = this.state;
     return (
       <View style={styles.container}>
@@ -120,12 +139,7 @@ export class marriage extends React.Component {
                     showsUserLocation
                     followUserLocation
                     onRegionChange={this.onRegionChangeB.bind(this)}
-                    initialRegion={{
-                      latitude: 17.68009,
-                      longitude: 83.20161,
-                      latitudeDelta: 0.0922,
-                      longitudeDelta: 0.0421
-                    }}
+                    initialRegion={this.state.Bcoord}
                   >
                     <MapView.Marker
                       coordinate={{
@@ -184,12 +198,7 @@ export class marriage extends React.Component {
                     showsUserLocation
                     followUserLocation
                     onRegionChange={this.onRegionChangeG.bind(this)}
-                    initialRegion={{
-                      latitude: 17.68009,
-                      longitude: 83.20161,
-                      latitudeDelta: 0.0922,
-                      longitudeDelta: 0.0421
-                    }}
+                    initialRegion={this.state.Gcoord}
                   >
                     <MapView.Marker
                       coordinate={{
@@ -222,7 +231,7 @@ export class marriage extends React.Component {
             </View>
           </Collapsible>
           {/*Code for Single Collapsible Ends*/}
-          <Button title="Generate" type="clear" />
+          <Button title="Generate" type="clear" onPress={this.onButtonGenerate.bind(this)} />
         </ScrollView>
       </View>
     );

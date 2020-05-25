@@ -2,3 +2,4 @@
 .DS_Store
 .expo/*
 web-build/*
+screens/data.js
