@@ -48,6 +48,62 @@ export class marriage extends React.Component {
     Gdate: "2016-05-15",
     Gtime: "00:00",
     response: "",
+    match_only: {
+      "match_status": 2,
+      "message": "Union is not preferable",
+      "varna": {
+          "bride": "Kshatriya",
+          "bridegroom": "Brahmin",
+          "point": 1,
+          "message": " Varna represents the working attitude and capacity.  The  bridegroom’s capacity needs to be higher than that of the bride for smooth running of the family. The bridegroom’s varna is Brahmin Varna while the bride comes under Kshatriya Varna. This type of combination is very much favorable for a union. For this couple Varna Koot is Good."
+      },
+      "vasya": {
+          "bride": "Manava",
+          "bridegroom": "Jalachara",
+          "point": 0.5,
+          "message": "Vasya was used to determine whether there will be a dedicated and compatible relationship between two people. The bridegroom’s Vasya is Jalachara Vasya while the bride comes under Manava Vasya. This is a normal match and not excellent or worst. For this couple Vasya Koot is Normal. However, if other gunas are matched well, then this alliance may be taken into consideration."
+      },
+      "tara": {
+          "bride": "Moola",
+          "bridegroom": "Uttara Bhadrapada",
+          "point": 1.5,
+          "message": "Tara is used to calculate the health and well-being of the bride and groom after marriage. The bridegroom and bride are in different Tara Group. The bridegroom's nakshatra Uttara Bhadrapada is 20th position from bride's nakshatra Moola and this is benefic. At the same time The bride's nakshatra Moola is 7th position from bridegroom's nakshatra Uttara Bhadrapada and this is malefic. This is a normal match. For this couple Tara Koot is Normal. But if other gunas are matched well, then this alliance may be taken into consideration."
+      },
+      "yoni": {
+          "bride": "Swah",
+          "bridegroom": "Gau",
+          "point": 2,
+          "message": "Yoni indicates the physical and sexual compatibility between a couple.The bridegroom’s Yoni is Gau while the bride comes under Swah Yoni. This is a preferable combination. For this couple Yoni Koot is Average."
+      },
+      "graha_maitri": {
+          "bride": "Jupiter",
+          "bridegroom": "Jupiter",
+          "point": 5,
+          "message": "Graha Maitri is used to examine the strength of the love between the couple. This is achieved by comparing the sign lords of the moon in the chart of the bride and groom.The bridegroom and the bride both belong to same Rasi Lord Jupiter.The bridegroom’s Rasi is Meena while the bride's Rasi is Dhanu. This is so far the best compatible match. For this couple Graha Maitri Koot is Excellent."
+      },
+      "gana": {
+          "bride": "Rakshasa",
+          "bridegroom": "Manushya",
+          "point": 0,
+          "message": "Gana is used to identify an individuals temperament.The bridegroom’s Gana is Manushya while the bride comes under Rakshasa Gana. This is inauspicious combination. For this couple Gana Koot is Not Good."
+      },
+      "bhakoot": {
+          "bride": "Dhanu",
+          "bridegroom": "Meena",
+          "point": 7,
+          "message": "Bhakoot or Rashikoot testing is used to verify the overall health, welfare and prosperity of a family after marriage. It is believed that Bhakoot Dosha can affect the intimacy between the couple and cause delays in pregnancy.The bridegroom’s Zodiac sign is Meena while the bride's Zodiac sign is Dhanu. This is an excellent combination from the happiness and prosperity point of view. For this couple Bhakoot Koot is Excellent."
+      },
+      "nadi": {
+          "bride": "Adi",
+          "bridegroom": "Madhya",
+          "point": 8,
+          "message": "Nadi testing is to check the genetic compatibility of the bride and groom to ensure they are capable of producing healthy children. Nadi Kuot is given supreme priority during match making.The bridegroom belongs to Madhya Nadi while the while the bride comes under Adi Nadi. This is considered to be extremely good combination according to nadi compatibility. For this couple Nadi Koot is Excellent."
+      },
+      "total_point": 25,
+      "sub_message": [
+          "There is substantial difference in the level of Mangal Dosha compatibility of both the horoscopes. Please consult an astrologer before proceeding to marriage."
+      ]
+  },
   };
 
 
@@ -61,7 +117,7 @@ export class marriage extends React.Component {
         'Content-Type': 'application/x-www-form-urlencoded'
       }), 
     });
-    response = await resp.json();
+    var response = await resp.json();
   } catch(err) {
     console.log("Error fetching data-----------", err);
 }
@@ -72,8 +128,9 @@ export class marriage extends React.Component {
     var getreq = "?ayanamsa=1&bride_dob="+this.state.Gdate+"T"+this.state.Gtime+":00%2B05:30&bride_coordinates="+this.state.Gcoord.latitude+","+this.state.Gcoord.longitude+"&bridegroom_dob="+this.state.Bdate+"T"+this.state.Btime+":00%2B05:30&bridegroom_coordinates="+this.state.Bcoord.latitude+","+this.state.Bcoord.longitude;
     //console.log(getreq)
     var resp =await this.getData(getreq)
-    this.setState({ response: getreq});
-    //console.log(resp)
+    this.setState({ response: resp});
+    this.setState({match_only: this.state.response["response"]["result"]})
+    console.log(this.state.response["response"]["result"]["message"])
   }
 
   toggleExpandedBoy = () => {
@@ -235,6 +292,31 @@ export class marriage extends React.Component {
           </Collapsible>
           {/*Code for Single Collapsible Ends*/}
           <Button title="Generate" type="clear" onPress={this.onButtonGenerate.bind(this)} />
+
+
+
+          {/* Data Starts */}
+
+          <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>varna</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["varna"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>వశ్య పొంతన</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["vasya"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#a099e0' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>Tara</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["tara"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>యోని పొంతన</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["yoni"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>Graha Maitri</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["graha_maitri"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>గణ పొంతన</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["gana"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>Bhakoot</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["bhakoot"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#a099e0' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>Nadi</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["nadi"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>Total</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["total_point"]}</Text></Col></Row>
+            
+
         </ScrollView>
       </View>
     );
