@@ -47,12 +47,14 @@ export class marriage extends React.Component {
     Btime: "00:00",
     Gdate: "2016-05-15",
     Gtime: "00:00",
+    response: "",
   };
 
 
   async getData(getreq){
+    console.log(GLOBAL.url)
     try {
-    const resp =await fetch(GLOBAL.url + getreq, { 
+    let resp =await fetch(GLOBAL.url + getreq, { 
       method: 'get', 
       headers: new Headers({
         'Authorization': 'Bearer '+GLOBAL.token, 
@@ -63,14 +65,15 @@ export class marriage extends React.Component {
   } catch(err) {
     console.log("Error fetching data-----------", err);
 }
-    return resp;
+    return response;
   }
-  onButtonGenerate(){
+  async onButtonGenerate(){
 
-    var getreq = "?ayanamsa=1&bride_dob="+this.state.Gdate+"T"+this.state.Gtime+":00+05:30&bride_coordinates="+this.state.Gcoord.latitude+","+this.state.Gcoord.longitude+"&bridegroom_dob="+this.state.Bdate+"T"+this.state.Btime+":00+05:30&bridegroom_coordinates="+this.state.Bcoord.latitude+","+this.state.Bcoord.longitude;
-    console.log(getreq)
-    var resp = this.getData(getreq)
-    console.log(resp)
+    var getreq = "?ayanamsa=1&bride_dob="+this.state.Gdate+"T"+this.state.Gtime+":00%2B05:30&bride_coordinates="+this.state.Gcoord.latitude+","+this.state.Gcoord.longitude+"&bridegroom_dob="+this.state.Bdate+"T"+this.state.Btime+":00%2B05:30&bridegroom_coordinates="+this.state.Bcoord.latitude+","+this.state.Bcoord.longitude;
+    //console.log(getreq)
+    var resp =await this.getData(getreq)
+    this.setState({ response: getreq});
+    //console.log(resp)
   }
 
   toggleExpandedBoy = () => {
