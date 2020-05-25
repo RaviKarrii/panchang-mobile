@@ -126,7 +126,7 @@ export class marriage extends React.Component {
   async onButtonGenerate() {
 
     var getreq = "?ayanamsa=1&bride_dob=" + this.state.Gdate + "T" + this.state.Gtime + ":00%2B05:30&bride_coordinates=" + this.state.Gcoord.latitude + "," + this.state.Gcoord.longitude + "&bridegroom_dob=" + this.state.Bdate + "T" + this.state.Btime + ":00%2B05:30&bridegroom_coordinates=" + this.state.Bcoord.latitude + "," + this.state.Bcoord.longitude;
-    //console.log(getreq)
+    console.log(getreq)
     var resp = await this.getData(getreq)
     this.setState({ response: resp });
     this.setState({ match_only: this.state.response["response"]["result"] })
@@ -192,7 +192,7 @@ export class marriage extends React.Component {
                   {/* </Col><Col><Row><Text>{this.state.Bcoord.latitude}</Text></Row><Row><Text>{this.state.Bcoord.longitude}</Text></Row></Col> */}
                 </Row>
                 <Row style={{ height: 200, backgroundColor: '#99e0d5' }}>
-
+                
                   <MapView
                     style={{ flex: 1 }}
 
@@ -206,8 +206,6 @@ export class marriage extends React.Component {
                         latitude: this.state.Bcoord.latitude,
                         longitude: this.state.Bcoord.longitude
                       }}
-                      title={"title"}
-                      description={"description"}
                     />
 
                   </MapView>
@@ -226,6 +224,7 @@ export class marriage extends React.Component {
                   <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><DatePicker
                     time={this.state.Btime}
                     mode="time"
+                    format={'HH:mm'}
                     confirmBtnText="Confirm"
                     cancelBtnText="Cancel"
                     onDateChange={(time) => { this.setState({ Btime: time }) }} /></Col></Row>
@@ -265,8 +264,6 @@ export class marriage extends React.Component {
                         latitude: this.state.Gcoord.latitude,
                         longitude: this.state.Gcoord.longitude
                       }}
-                      title={"title"}
-                      description={"description"}
                     />
 
                   </MapView>
@@ -284,6 +281,7 @@ export class marriage extends React.Component {
                   <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><DatePicker
                     time={this.state.Gtime}
                     mode="time"
+                    format={'HH:mm'}
                     confirmBtnText="Confirm"
                     cancelBtnText="Cancel"
                     onDateChange={(time) => { this.setState({ Gtime: time }) }} /></Col></Row>
@@ -297,9 +295,9 @@ export class marriage extends React.Component {
 
           {/* Data Starts */}
           <Row style={{ height: 60, backgroundColor: '#474545' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>{this.state.match_only["message"]}</Text></Col></Row>
-          <Row style={{ height: 60, backgroundColor: '#474545' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పేరు</Text></Col>
-            <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>ఉన్నవి</Text></Col>
-            <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>వచ్చినవి</Text></Col></Row>
+          <Row style={{ height: 60, backgroundColor: 'white' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>పేరు</Text></Col>
+            <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>ఉన్నవి</Text></Col>
+            <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>వచ్చినవి</Text></Col></Row>
             <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>వర్ణ కూటం</Text></Col>
               <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>1</Text></Col>
               <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["varna"]["point"]}</Text></Col></Row>
