@@ -25,7 +25,7 @@ const bottomTabNavigator = createBottomTabNavigator(
         )
       }
     },
-    గుణమేళనం:{
+    Matching:{
       screen : marriage,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
@@ -33,14 +33,7 @@ const bottomTabNavigator = createBottomTabNavigator(
         )
       }
     },
-    Settings:{
-      screen : Settings,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => (
-          <Feather name="settings" size={25} color={tintColor} />
-        )
-      }
-    }
+    
   },
   {
     initialRouteName: 'Home'

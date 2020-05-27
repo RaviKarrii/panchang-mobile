@@ -19,92 +19,96 @@ import GLOBAL from './data.js';
 
 
 export class marriage extends React.Component {
-  state = {
-    //default active selector
-    activeSections: [],
-    //collapsed condition for the single collapsible
-    collapsedBoy: false,
-    collapsedGirl: false,
-    //multipleSelect is for the Multiple Expand allowed
-    //true: You can expand multiple at a time
-    //false: One can be expand at a time and other will be closed automatically
-    multipleSelect: true,
-    Bcoord: {
-      latitude: 16.96036,
-      longitude: 82.23809,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    }
-    ,
-    Gcoord: {
-      latitude: 16.96036,
-      longitude: 82.23809,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    }
-    ,
-    Bdate: "2016-05-15",
-    Btime: "00:00",
-    Gdate: "2016-05-15",
-    Gtime: "00:00",
-    response: "",
-    match_only: {
-      "match_status": 2,
-      "message": "దయచేసి వివరాలు ఇవ్వండి",
-      "varna": {
-        "bride": "Kshatriya",
-        "bridegroom": "Brahmin",
-        "point": 0,
-        "message": " Varna represents the working attitude and capacity.  The  bridegroom’s capacity needs to be higher than that of the bride for smooth running of the family. The bridegroom’s varna is Brahmin Varna while the bride comes under Kshatriya Varna. This type of combination is very much favorable for a union. For this couple Varna Koot is Good."
+  constructor(props) {
+    super(props)
+    this.state = {
+      //default active selector
+      activeSections: [],
+      //collapsed condition for the single collapsible
+      collapsedBoy: false,
+      collapsedGirl: false,
+      //multipleSelect is for the Multiple Expand allowed
+      //true: You can expand multiple at a time
+      //false: One can be expand at a time and other will be closed automatically
+      multipleSelect: true,
+      Bcoord: {
+        latitude: 16.96036,
+        longitude: 82.23809,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
+      ,
+      Gcoord: {
+        latitude: 16.96036,
+        longitude: 82.23809,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
+      ,
+      Bdate: "2016-05-15",
+      Btime: "00:00",
+      Gdate: "2016-05-15",
+      Gtime: "00:00",
+      response: "",
+      match_only: {
+        "match_status": 2,
+        "message": "దయచేసి వివరాలు ఇవ్వండి",
+        "varna": {
+          "bride": "Kshatriya",
+          "bridegroom": "Brahmin",
+          "point": 0,
+          "message": " Varna represents the working attitude and capacity.  The  bridegroom’s capacity needs to be higher than that of the bride for smooth running of the family. The bridegroom’s varna is Brahmin Varna while the bride comes under Kshatriya Varna. This type of combination is very much favorable for a union. For this couple Varna Koot is Good."
+        },
+        "vasya": {
+          "bride": "Manava",
+          "bridegroom": "Jalachara",
+          "point": 0,
+          "message": "Vasya was used to determine whether there will be a dedicated and compatible relationship between two people. The bridegroom’s Vasya is Jalachara Vasya while the bride comes under Manava Vasya. This is a normal match and not excellent or worst. For this couple Vasya Koot is Normal. However, if other gunas are matched well, then this alliance may be taken into consideration."
+        },
+        "tara": {
+          "bride": "Moola",
+          "bridegroom": "Uttara Bhadrapada",
+          "point": 0,
+          "message": "Tara is used to calculate the health and well-being of the bride and groom after marriage. The bridegroom and bride are in different Tara Group. The bridegroom's nakshatra Uttara Bhadrapada is 20th position from bride's nakshatra Moola and this is benefic. At the same time The bride's nakshatra Moola is 7th position from bridegroom's nakshatra Uttara Bhadrapada and this is malefic. This is a normal match. For this couple Tara Koot is Normal. But if other gunas are matched well, then this alliance may be taken into consideration."
+        },
+        "yoni": {
+          "bride": "Swah",
+          "bridegroom": "Gau",
+          "point": 0,
+          "message": "Yoni indicates the physical and sexual compatibility between a couple.The bridegroom’s Yoni is Gau while the bride comes under Swah Yoni. This is a preferable combination. For this couple Yoni Koot is Average."
+        },
+        "graha_maitri": {
+          "bride": "Jupiter",
+          "bridegroom": "Jupiter",
+          "point": 0,
+          "message": "Graha Maitri is used to examine the strength of the love between the couple. This is achieved by comparing the sign lords of the moon in the chart of the bride and groom.The bridegroom and the bride both belong to same Rasi Lord Jupiter.The bridegroom’s Rasi is Meena while the bride's Rasi is Dhanu. This is so far the best compatible match. For this couple Graha Maitri Koot is Excellent."
+        },
+        "gana": {
+          "bride": "Rakshasa",
+          "bridegroom": "Manushya",
+          "point": 0,
+          "message": "Gana is used to identify an individuals temperament.The bridegroom’s Gana is Manushya while the bride comes under Rakshasa Gana. This is inauspicious combination. For this couple Gana Koot is Not Good."
+        },
+        "bhakoot": {
+          "bride": "Dhanu",
+          "bridegroom": "Meena",
+          "point": 0,
+          "message": "Bhakoot or Rashikoot testing is used to verify the overall health, welfare and prosperity of a family after marriage. It is believed that Bhakoot Dosha can affect the intimacy between the couple and cause delays in pregnancy.The bridegroom’s Zodiac sign is Meena while the bride's Zodiac sign is Dhanu. This is an excellent combination from the happiness and prosperity point of view. For this couple Bhakoot Koot is Excellent."
+        },
+        "nadi": {
+          "bride": "Adi",
+          "bridegroom": "Madhya",
+          "point": 0,
+          "message": "Nadi testing is to check the genetic compatibility of the bride and groom to ensure they are capable of producing healthy children. Nadi Kuot is given supreme priority during match making.The bridegroom belongs to Madhya Nadi while the while the bride comes under Adi Nadi. This is considered to be extremely good combination according to nadi compatibility. For this couple Nadi Koot is Excellent."
+        },
+        "total_point": 0,
+        "sub_message": [
+          "There is substantial difference in the level of Mangal Dosha compatibility of both the horoscopes. Please consult an astrologer before proceeding to marriage."
+        ]
       },
-      "vasya": {
-        "bride": "Manava",
-        "bridegroom": "Jalachara",
-        "point": 0,
-        "message": "Vasya was used to determine whether there will be a dedicated and compatible relationship between two people. The bridegroom’s Vasya is Jalachara Vasya while the bride comes under Manava Vasya. This is a normal match and not excellent or worst. For this couple Vasya Koot is Normal. However, if other gunas are matched well, then this alliance may be taken into consideration."
-      },
-      "tara": {
-        "bride": "Moola",
-        "bridegroom": "Uttara Bhadrapada",
-        "point": 0,
-        "message": "Tara is used to calculate the health and well-being of the bride and groom after marriage. The bridegroom and bride are in different Tara Group. The bridegroom's nakshatra Uttara Bhadrapada is 20th position from bride's nakshatra Moola and this is benefic. At the same time The bride's nakshatra Moola is 7th position from bridegroom's nakshatra Uttara Bhadrapada and this is malefic. This is a normal match. For this couple Tara Koot is Normal. But if other gunas are matched well, then this alliance may be taken into consideration."
-      },
-      "yoni": {
-        "bride": "Swah",
-        "bridegroom": "Gau",
-        "point": 0,
-        "message": "Yoni indicates the physical and sexual compatibility between a couple.The bridegroom’s Yoni is Gau while the bride comes under Swah Yoni. This is a preferable combination. For this couple Yoni Koot is Average."
-      },
-      "graha_maitri": {
-        "bride": "Jupiter",
-        "bridegroom": "Jupiter",
-        "point": 0,
-        "message": "Graha Maitri is used to examine the strength of the love between the couple. This is achieved by comparing the sign lords of the moon in the chart of the bride and groom.The bridegroom and the bride both belong to same Rasi Lord Jupiter.The bridegroom’s Rasi is Meena while the bride's Rasi is Dhanu. This is so far the best compatible match. For this couple Graha Maitri Koot is Excellent."
-      },
-      "gana": {
-        "bride": "Rakshasa",
-        "bridegroom": "Manushya",
-        "point": 0,
-        "message": "Gana is used to identify an individuals temperament.The bridegroom’s Gana is Manushya while the bride comes under Rakshasa Gana. This is inauspicious combination. For this couple Gana Koot is Not Good."
-      },
-      "bhakoot": {
-        "bride": "Dhanu",
-        "bridegroom": "Meena",
-        "point": 0,
-        "message": "Bhakoot or Rashikoot testing is used to verify the overall health, welfare and prosperity of a family after marriage. It is believed that Bhakoot Dosha can affect the intimacy between the couple and cause delays in pregnancy.The bridegroom’s Zodiac sign is Meena while the bride's Zodiac sign is Dhanu. This is an excellent combination from the happiness and prosperity point of view. For this couple Bhakoot Koot is Excellent."
-      },
-      "nadi": {
-        "bride": "Adi",
-        "bridegroom": "Madhya",
-        "point": 0,
-        "message": "Nadi testing is to check the genetic compatibility of the bride and groom to ensure they are capable of producing healthy children. Nadi Kuot is given supreme priority during match making.The bridegroom belongs to Madhya Nadi while the while the bride comes under Adi Nadi. This is considered to be extremely good combination according to nadi compatibility. For this couple Nadi Koot is Excellent."
-      },
-      "total_point": 0,
-      "sub_message": [
-        "There is substantial difference in the level of Mangal Dosha compatibility of both the horoscopes. Please consult an astrologer before proceeding to marriage."
-      ]
-    },
-  };
+    };
+  }
+  
 
 
   async getData(getreq) {
