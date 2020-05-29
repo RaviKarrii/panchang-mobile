@@ -17,7 +17,7 @@ export default class Example extends React.Component {
 
 const bottomTabNavigator = createBottomTabNavigator(
   {
-    Home: {
+    "పంచాంగం": {
       screen : HomeScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
@@ -25,7 +25,7 @@ const bottomTabNavigator = createBottomTabNavigator(
         )
       }
     },
-    Matching:{
+    "జాతకం మ్యాచింగ్":{
       screen : Marriage,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
@@ -36,7 +36,7 @@ const bottomTabNavigator = createBottomTabNavigator(
     
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'పంచాంగం'
   }
 );
 
