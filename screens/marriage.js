@@ -7,18 +7,17 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
+  TouchableOpacity,Picker,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { Button } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
 import { Col, Row, Grid } from "react-native-easy-grid";
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import GLOBAL from './data.js';
 
 
 
-export class marriage extends React.Component {
+export class Marriage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -106,10 +105,18 @@ export class marriage extends React.Component {
           "There is substantial difference in the level of Mangal Dosha compatibility of both the horoscopes. Please consult an astrologer before proceeding to marriage."
         ]
       },
+      userTypes: [{userType: 'admin', userName: 'Admin User'}, {userType: 'employee', userName: 'Employee User'}, {userType: 'dev', userName: 'Developer User'}],
+      selectedLB: "test",
+      selectedLG: "test",
     };
   }
   
 
+  loadUserTypes = () => {
+    return this.state.userTypes.map(user => (
+       <Picker.Item label={user.userName} value={user.userType} key={user.userType} />
+    ))
+  }
 
   async getData(getreq) {
     console.log(GLOBAL.url)
@@ -167,6 +174,7 @@ export class marriage extends React.Component {
     this.setState({ collapsedGirl: false })
     this.setState({ Bcoord: region })
   }
+  
   onRegionChangeG(region) {
     //console.log(region)
     this.setState({ collapsedGirl: false })
@@ -191,29 +199,18 @@ export class marriage extends React.Component {
               <Grid>
 
                 {/* Start of Map*/}
-                <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col></Col><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}>
-                  <Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>జన్మస్థానం</Text></Col><Col></Col>
-                  {/* </Col><Col><Row><Text>{this.state.Bcoord.latitude}</Text></Row><Row><Text>{this.state.Bcoord.longitude}</Text></Row></Col> */}
-                </Row>
-                <Row style={{ height: 200, backgroundColor: '#99e0d5' }}>
-                
-                  <MapView
-                    style={{ flex: 1 }}
+                <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}>
+                  <Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>జన్మస్థానం</Text></Col>
+                  <Col>
+                  {/* MAP Here */}
+                  <Picker selectedValue={this.state.selectedLB} 
+                          onValueChange={(itemValue, itemIndex) => this.setState({selectedLB: itemValue})} >
+                    <Picker.Item label="-------Select------" value="test"/>
+                   {this.loadUserTypes()}
+                  </Picker>
+                  </Col>
 
-                    showsUserLocation
-                    followUserLocation
-                    onRegionChange={this.onRegionChangeB.bind(this)}
-                    initialRegion={this.state.Bcoord}
-                  >
-                    <MapView.Marker
-                      coordinate={{
-                        latitude: this.state.Bcoord.latitude,
-                        longitude: this.state.Bcoord.longitude
-                      }}
-                    />
-
-                  </MapView>
-                </Row>
+                  </Row>
                 {/* End of Map*/}
 
                 <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పుట్టినరోజు</Text></Col>
@@ -250,32 +247,21 @@ export class marriage extends React.Component {
           <Collapsible collapsed={this.state.collapsedGirl} align="center">
             <View style={styles.content}>
               <Grid>
-                {/* Start of Map*/}
-                <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col></Col><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}>
-                  <Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>జన్మస్థానం</Text></Col><Col></Col>
-                  {/* </Col><Col><Row><Text>{this.state.Bcoord.latitude}</Text></Row><Row><Text>{this.state.Bcoord.longitude}</Text></Row></Col> */}
-                </Row>
-                <Row style={{ height: 200, backgroundColor: '#d095db' }}>
+            <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}>
+                  <Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>జన్మస్థానం</Text></Col>
+                
+                  {/* MAP Here */}
+                  <Col>
+                  <Picker selectedValue={this.state.selectedLG} 
+                          onValueChange={(itemValue, itemIndex) => this.setState({selectedLG: itemValue})} >
+                    <Picker.Item label="-------Select------" value="test"/>
+                    {this.loadUserTypes()}
+                  </Picker>
+                  </Col>
 
-                  <MapView
-                    style={{ flex: 1 }}
-
-                    showsUserLocation
-                    followUserLocation
-                    onRegionChange={this.onRegionChangeG.bind(this)}
-                    initialRegion={this.state.Gcoord}
-                  >
-                    <MapView.Marker
-                      coordinate={{
-                        latitude: this.state.Gcoord.latitude,
-                        longitude: this.state.Gcoord.longitude
-                      }}
-                    />
-
-                  </MapView>
-                </Row>
+                  </Row>
                 {/* End of Map*/}
-                <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పుట్టినరోజు</Text></Col>
+                <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>పుట్టినరోజు</Text></Col>
                   <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><DatePicker
                     date={this.state.Gdate}
                     showIcon={false}

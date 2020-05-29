@@ -1,6 +1,6 @@
 import React from 'react';
 import {HomeScreen} from './screens/HomeScreen' ;
-import {marriage} from './screens/marriage' ;
+import {Marriage} from './screens/marriage' ;
 import {Settings} from './screens/Settings' ;
 import { createBottomTabNavigator} from 'react-navigation-tabs';
 import {createAppContainer } from 'react-navigation'
@@ -26,7 +26,7 @@ const bottomTabNavigator = createBottomTabNavigator(
       }
     },
     Matching:{
-      screen : marriage,
+      screen : Marriage,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Feather name="command" size={25} color={tintColor} />
