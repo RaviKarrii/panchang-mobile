@@ -114,7 +114,7 @@ export class Marriage extends React.Component {
 
   loadUserTypes = () => {
     return this.state.userTypes.map(user => (
-       <Picker.Item label={user.userName} value={user.userType} key={user.userType} />
+       <Picker.Item label={user.label} value={user.value} />
     ))
   }
 
@@ -130,7 +130,7 @@ export class Marriage extends React.Component {
       });
       var response = await resp.json();
     } catch (err) {
-      console.log("Error fetching data-----------", err);
+      console.log("Error fetching data--", err);
     }
     return response;
   }
@@ -160,12 +160,35 @@ export class Marriage extends React.Component {
     });
   };
 
+  componentWillMount(){
+    var data = GLOBAL.locdata;
+    this.setState({userTypes : data});
+}
   componentDidUpdate(prevProps, prevState) {
     if (prevState.Btime !== this.state.Btime) {
       this.setState({ collapsedBoy: true })
     }
     if (prevState.Gtime !== this.state.Gtime) {
       this.setState({ collapsedGirl: true })
+    }
+    if (prevState.selectedLB !== this.state.selectedLB) {
+      var split = this.state.selectedLB.split("-")
+      this.setState({Bcoord : {
+        latitude: split[0],
+        longitude: split[1],
+        latitudeDelta: 0.0,
+        longitudeDelta: 0.0,
+      }})
+      
+    }
+    if (prevState.selectedLG !== this.state.selectedLG) {
+      var split = this.state.selectedLG.split("-")
+      this.setState({Gcoord : {
+        latitude: split[0],
+        longitude: split[1],
+        latitudeDelta: 0.0,
+        longitudeDelta: 0.0,
+      }})
     }
   }
 
@@ -205,7 +228,7 @@ export class Marriage extends React.Component {
                   {/* MAP Here */}
                   <Picker selectedValue={this.state.selectedLB} 
                           onValueChange={(itemValue, itemIndex) => this.setState({selectedLB: itemValue})} >
-                    <Picker.Item label="-------Select------" value="test"/>
+                    <Picker.Item label="--Select--" value="test"/>
                    {this.loadUserTypes()}
                   </Picker>
                   </Col>
@@ -254,7 +277,7 @@ export class Marriage extends React.Component {
                   <Col>
                   <Picker selectedValue={this.state.selectedLG} 
                           onValueChange={(itemValue, itemIndex) => this.setState({selectedLG: itemValue})} >
-                    <Picker.Item label="-------Select------" value="test"/>
+                    <Picker.Item label="--Select--" value="test"/>
                     {this.loadUserTypes()}
                   </Picker>
                   </Col>
