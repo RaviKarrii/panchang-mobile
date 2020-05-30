@@ -1,7 +1,6 @@
 import React from 'react';
 import {HomeScreen} from './screens/HomeScreen' ;
 import {Marriage} from './screens/marriage' ;
-import {Settings} from './screens/Settings' ;
 import { createBottomTabNavigator} from 'react-navigation-tabs';
 import {createAppContainer } from 'react-navigation'
 import Feather from 'react-native-vector-icons/Feather';

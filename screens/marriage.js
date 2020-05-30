@@ -308,41 +308,40 @@ export class Marriage extends React.Component {
           {/*Code for Single Collapsible Ends*/}
           <Button title="Generate" type="clear" onPress={this.onButtonGenerate.bind(this)} />
 
-
-
           {/* Data Starts */}
+          <Grid > 
           <Row style={{ height: 60, backgroundColor: '#474545' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>{this.state.match_only["message"]}</Text></Col></Row>
           <Row style={{ height: 60, backgroundColor: 'white' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>పేరు</Text></Col>
             <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>ఉన్నవి</Text></Col>
             <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>వచ్చినవి</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>వర్ణ కూటం</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>1</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["varna"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>వశ్యకూటం</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>2</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["vasya"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#a099e0' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>తారా కూటం</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>3</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["tara"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>యోని కూటం</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>4</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["yoni"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#d095db' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>గ్రహమైత్రి కూటం</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>5</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["graha_maitri"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#99e0ac' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>గణ కూటం</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>6</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["gana"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#e09999' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>రాశి కూటం</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>7</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["bhakoot"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#a099e0' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>నాడీ పొంతన</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>8</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["nadi"]["point"]}</Text></Col></Row>
-            <Row style={{ height: 60, backgroundColor: '#99e0d5' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }} style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'white', fontWeight: 'bold' }}>మొత్తం గుణములు</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>36</Text></Col>
-              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'white', fontWeight: 'bold' }}>{this.state.match_only["total_point"]}</Text></Col></Row>
-
+            <Row style={{ height: 60, backgroundColor: '#E6E6E6' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>వర్ణ కూటం</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>1</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["varna"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: 'white' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>వశ్యకూటం</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>2</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["vasya"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#E6E6E6' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>తారా కూటం</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>3</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["tara"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: 'white' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>యోని కూటం</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>4</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["yoni"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#E6E6E6' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>గ్రహమైత్రి కూటం</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>5</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["graha_maitri"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: 'white' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>గణ కూటం</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>6</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["gana"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#E6E6E6' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>రాశి కూటం</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>7</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["bhakoot"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: 'white' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>నాడీ పొంతన</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>8</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["nadi"]["point"]}</Text></Col></Row>
+            <Row style={{ height: 60, backgroundColor: '#E6E6E6' }}><Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ left: 10, color: 'black', fontWeight: 'bold' }}>మొత్తం </Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>36</Text></Col>
+              <Col style={{ top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center' }}><Text style={{ color: 'black', fontWeight: 'bold' }}>{this.state.match_only["total_point"]}</Text></Col></Row>
+              </Grid>
         </ScrollView>
       </View>
     );
